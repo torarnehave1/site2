@@ -12,9 +12,10 @@ app.use(express.urlencoded({ extended: true })); // For URL-encoded data
 // Handle POST request
 app.post('/submit', (req, res) => {
     const data = req.body;
-    console.log('Data received:', data);
-    res.send(`Received your data!`);
+    console.log('Data received:', data);  // Continue to log the data for server-side visibility
+    res.send(`Received your data: ${JSON.stringify(data)}`);  // Include the data in the response
 });
+
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
