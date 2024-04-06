@@ -1,3 +1,5 @@
+app.use(express.static('public'));
+
 const express = require('express');
 const bodyParser = require('body-parser');  // Helps in parsing the body of POST requests
 const app = express();
