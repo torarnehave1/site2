@@ -1,18 +1,13 @@
-app.use(express.static('public'));
-
 const express = require('express');
-const bodyParser = require('body-parser');  // Helps in parsing the body of POST requests
 const app = express();
 const port = 3000;
 
-// Middleware to parse JSON bodies
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// Serve files from the public directory
+app.use(express.static('public'));
 
-// Serve HTML file
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
+// Additional middleware for parsing request bodies, if needed
+app.use(express.json()); // For JSON
+app.use(express.urlencoded({ extended: true })); // For URL-encoded data
 
 // Handle POST request
 app.post('/submit', (req, res) => {
